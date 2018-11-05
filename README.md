@@ -16,3 +16,7 @@ To convert to slides (or see presentation)
 ```commandline
 jupyter nbconvert index.ipynb --to slides --post serve
 ```
+
+
+Slides available here:
+https://nikosmixas.github.io/use_python_to_improve_fantasy_team_pycon_balkan_2018/index.slides.html#/
