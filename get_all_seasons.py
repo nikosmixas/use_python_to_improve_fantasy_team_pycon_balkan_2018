@@ -32,15 +32,15 @@ def get_attr(s, attr):
         return ''
 
 
-def read_all_seasons(new_file=False):
-    player_data = read_all_players_from_csv('players.csv')
+def read_all_seasons(new_file=False, seasons_filename='seasons.csv', players_filename='players.csv'):
+    player_data = read_all_players_from_csv(players_filename)
     if new_file:
-        with open('seasons.csv', 'w') as csvfile:
+        with open(seasons_filename, 'w') as csvfile:
             writer = csv.writer(csvfile)
             writer.writerow(ALL_COLUMNS)
         existing_players = set()
     else:
-        with open('seasons.csv', 'r') as csvfile:
+        with open(seasons_filename, 'r') as csvfile:
             reader = csv.DictReader(csvfile)
             existing_players = set(row['ShortName'] for row in reader)
     for player_row in player_data:
@@ -71,7 +71,7 @@ def read_all_seasons(new_file=False):
         season_df['SeasonURL'] = [get_season_href(a) for a in s.select('#per_game > tbody > tr')] + ['']
         season_df = season_df[season_df['G'] > 0]
 
-        with open('seasons.csv', 'a') as csvfile:
+        with open(seasons_filename, 'a') as csvfile:
             season_df.to_csv(csvfile, columns=ALL_COLUMNS, header=False, index=False)
 
 
