@@ -18,4 +18,4 @@ jupyter nbconvert index.ipynb --to slides --post serve
 ```
 
 
-Slides available [here](https://goo.gl/2ixJ6W):
+Slides available [here](https://goo.gl/2ixJ6W)
